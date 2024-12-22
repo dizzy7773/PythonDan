@@ -40,25 +40,36 @@ class Tank():
     def move(self, dx, dy):
         self.box.x += dx
         self.box.y += dy
+    # проверка какой это танк
+    def writeHP(side):
+        fontObj = pygame.font.SysFont()
+
+        if side == "left":
+            print()
+            # пишем текст слева
+        else:
+            print()
+            # пишем текст справа
+
 
 # Инициализация окна
-mw = pygame.display.set_mode((800, 800))
+mw = pygame.display.set_mode((800, 600))
 clock = pygame.time.Clock()
 
 in_game = True
 
 tank1 = Tank("images/tank1.png", 140, "pod", 60, 40, "gray", 40, 50, 40, 40)
-tank2 = Tank("images/tank2.png", 200, "bp", 100, 30, "gray", 750, 750, 40, 40)
+tank2 = Tank("images/tank2.png", 200, "bp", 100, 30, "gray", 750, 550, 40, 40)
 
 # Функция для рисования мин
 def draw_mines():
-    cell_size = 80  # Размер одной клетки (800/10)
+    cell_size = 60  # Размер одной клетки (800/10)
     for row in range(10):
         for col in range(10):
             if fild[row][col] == 1:  # Если мина
                 mine_x = col * cell_size
                 mine_y = row * cell_size
-                pygame.draw.circle(mw, (255, 0, 0), (mine_x + cell_size // 2, mine_y + cell_size // 2), cell_size // 4)
+                pygame.draw.circle(mw, (255, 0, 0), (100 + mine_x + cell_size // 2, mine_y + cell_size // 2), cell_size // 4)
 
 # Проверка на столкновение с миной
 def check_mines(tank):
@@ -81,17 +92,17 @@ while in_game:
     keys = pygame.key.get_pressed()
     if keys[pygame.K_UP]:
         if tank1.box.y > 0:
-            tank1.move(0, -5)
+            tank1.move(0, -2)
     if keys[pygame.K_DOWN]:
         
         if tank1.box.y < 785:
-            tank1.move(0, 5)
+            tank1.move(0, 2)
     if keys[pygame.K_LEFT]:
         if tank1.box.x > 0:
-            tank1.move(-5, 0)
+            tank1.move(-2, 0)
     if keys[pygame.K_RIGHT]:
         if tank1.box.x < 780:
-            tank1.move(5, 0)
+            tank1.move(2, 0)
 
     # Рисуем мины
     draw_mines()
@@ -103,7 +114,10 @@ while in_game:
     tank1.draw()
     tank2.draw()
 
+    tank1.writeHP("left")
+    tank2.writeHP("")
+    
     pygame.display.update()
-    clock.tick(90)
+    clock.tick(60)
 
 pygame.quit()

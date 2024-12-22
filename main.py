@@ -70,8 +70,9 @@ def check_mines(tank):
         print(f"Tank hit a mine! HP left: {tank.hp}")
         fild[tank_row][tank_col] = 0  # Убираем мину с поля
 
-# while in_game:
-#     mw.fill("gray")
+in_game = True
+while in_game:
+    mw.fill("gray")
 
     event_list = pygame.event.get()
     for event in event_list:
@@ -103,7 +104,7 @@ def check_mines(tank):
     tank1.draw()
     tank2.draw()
 
-#     pygame.display.update()
-#     clock.tick(90)
+    pygame.display.update()
+    clock.tick(90)
 
 pygame.quit()

@@ -45,7 +45,7 @@ class Tank():
 mw = pygame.display.set_mode((800, 800))
 clock = pygame.time.Clock()
 
-in_game = True
+# in_game = True
 
 tank1 = Tank("images/tank1.png", 140, "pod", 60, 40, "gray", 40, 50, 40, 40)
 tank2 = Tank("images/tank2.png", 200, "bp", 100, 30, "gray", 750, 750, 40, 40)
@@ -70,8 +70,8 @@ def check_mines(tank):
         print(f"Tank hit a mine! HP left: {tank.hp}")
         fild[tank_row][tank_col] = 0  # Убираем мину с поля
 
-while in_game:
-    mw.fill("gray")
+# while in_game:
+#     mw.fill("gray")
 
     event_list = pygame.event.get()
     for event in event_list:
@@ -103,7 +103,7 @@ while in_game:
     tank1.draw()
     tank2.draw()
 
-    pygame.display.update()
-    clock.tick(90)
+#     pygame.display.update()
+#     clock.tick(90)
 
 pygame.quit()
